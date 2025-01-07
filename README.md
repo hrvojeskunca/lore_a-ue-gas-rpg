@@ -11,3 +11,4 @@ This project was inspired by Stephen Ulibarri's Unreal Engine courses on Udemy. 
 ## Additional Acknowledgments
 - **Character Model**: The character model used in this project, **Eve**, was created by **J. Gonzales** and is provided through [Mixamo](https://www.mixamo.com/).
 - **Animations**: Animations for this project were also sourced from [Mixamo](https://www.mixamo.com/), a platform offering free character rigs and animations for non-commercial use.
+- **Weapon Model**: The spear model, **Spear of Tzeentch**, was created by **Elliot Gong** and is available as a free asset on [FAB](https://fab.com/).
