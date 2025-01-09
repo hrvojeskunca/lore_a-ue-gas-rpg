@@ -16,6 +16,4 @@ ALoreCharacterBase::ALoreCharacterBase()
 void ALoreCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	
 }

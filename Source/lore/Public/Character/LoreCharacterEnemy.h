@@ -4,25 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "LoreCharacterBase.h"
+#include "Interface/EnemyInterface.h"
 #include "LoreCharacterEnemy.generated.h"
 
 UCLASS()
-class LORE_API ALoreCharacterEnemy : public ALoreCharacterBase
+class LORE_API ALoreCharacterEnemy : public ALoreCharacterBase, public IEnemyInterface
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
 	ALoreCharacterEnemy();
 
+	virtual void HighlightActor() override;
+	virtual void UnHighlightActor() override;
+
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 };
