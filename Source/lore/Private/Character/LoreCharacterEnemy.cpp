@@ -7,6 +7,8 @@
 ALoreCharacterEnemy::ALoreCharacterEnemy()
 {
 	PrimaryActorTick.bCanEverTick = false;
+
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 }
 
 void ALoreCharacterEnemy::BeginPlay()
@@ -18,8 +20,15 @@ void ALoreCharacterEnemy::BeginPlay()
 
 void ALoreCharacterEnemy::HighlightActor()
 {
+	GetMesh()->SetRenderCustomDepth(true);
+	GetMesh()->SetCustomDepthStencilValue(CustomDepthStencilRed);
+	WeaponComponent->SetRenderCustomDepth(true);
+	WeaponComponent->SetCustomDepthStencilValue(CustomDepthStencilRed);
+
 }
 
 void ALoreCharacterEnemy::UnHighlightActor()
 {
+	GetMesh()->SetRenderCustomDepth(false);
+	WeaponComponent->SetRenderCustomDepth(false);
 }

@@ -20,4 +20,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+
+private:
+	int32 CustomDepthStencilRed = 250;
 };
