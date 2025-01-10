@@ -4,29 +4,31 @@
 #include "lore/Public/Character/LoreCharacterEnemy.h"
 
 
-// Sets default values
 ALoreCharacterEnemy::ALoreCharacterEnemy()
 {
-	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
+
+	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 }
 
-// Called when the game starts or when spawned
 void ALoreCharacterEnemy::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
-// Called every frame
-void ALoreCharacterEnemy::Tick(float DeltaTime)
+
+void ALoreCharacterEnemy::HighlightActor()
 {
-	Super::Tick(DeltaTime);
+	GetMesh()->SetRenderCustomDepth(true);
+	GetMesh()->SetCustomDepthStencilValue(CustomDepthStencilRed);
+	WeaponComponent->SetRenderCustomDepth(true);
+	WeaponComponent->SetCustomDepthStencilValue(CustomDepthStencilRed);
+
 }
 
-// Called to bind functionality to input
-void ALoreCharacterEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ALoreCharacterEnemy::UnHighlightActor()
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	GetMesh()->SetRenderCustomDepth(false);
+	WeaponComponent->SetRenderCustomDepth(false);
 }
-
