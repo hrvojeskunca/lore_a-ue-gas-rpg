@@ -3,7 +3,9 @@
 
 #include "lore/Public/Character/LoreCharacterPlayer.h"
 
+#include "AbilitySystemComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "State/LorePlayerState.h"
 
 
 ALoreCharacterPlayer::ALoreCharacterPlayer()
@@ -29,5 +31,30 @@ void ALoreCharacterPlayer::SetDefaultCharacterMovement()
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
 }
+
+void ALoreCharacterPlayer::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	InitAbilityActorInfo();
+}
+
+void ALoreCharacterPlayer::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	InitAbilityActorInfo();
+	
+}
+
+void ALoreCharacterPlayer::InitAbilityActorInfo()
+{
+	if (ALorePlayerState* LorePlayerState = GetPlayerState<ALorePlayerState>())
+	{
+		LorePlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(LorePlayerState, this);
+		AbilitySystemComponent = LorePlayerState->GetAbilitySystemComponent();
+		AttributeSet = LorePlayerState->GetAttributeSet();
+	}
+}
+
 
 

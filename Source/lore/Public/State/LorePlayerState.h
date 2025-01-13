@@ -4,29 +4,27 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
-#include "GameFramework/Character.h"
-#include "LoreCharacterBase.generated.h"
+#include "GameFramework/PlayerState.h"
+#include "LorePlayerState.generated.h"
 
 class UAttributeSet;
 class UAbilitySystemComponent;
 
-UCLASS(Abstract)
-class LORE_API ALoreCharacterBase : public ACharacter, public IAbilitySystemInterface
+/**
+ * 
+ */
+UCLASS()
+class LORE_API ALorePlayerState : public APlayerState, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
-	ALoreCharacterBase();
+	ALorePlayerState();
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const;
 
 protected:
-	virtual void BeginPlay() override;
-
-	UPROPERTY(EditAnywhere, Category = Combat)
-	TObjectPtr<UStaticMeshComponent> WeaponComponent;
-
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 	UPROPERTY()

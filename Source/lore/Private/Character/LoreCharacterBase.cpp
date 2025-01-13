@@ -17,3 +17,13 @@ void ALoreCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 }
+
+UAbilitySystemComponent* ALoreCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
+UAttributeSet* ALoreCharacterBase::GetAttributeSet() const
+{
+	return AttributeSet;
+}
